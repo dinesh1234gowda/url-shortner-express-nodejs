@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParder = require('body-parser');
 const config = require(`./config/${process.env.NODE_ENV?process.env.NODE_ENV:'production'}.js`)
 const app = express();
-const crypto = require('crypto')
 const shortenUrlRoutes = require('./src/routes/shorten-url')
 
 app.use(bodyParder.json());
