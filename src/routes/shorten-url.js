@@ -1,11 +1,11 @@
 const express = require('express');
 const Router = express.Router();
-const { setUrl, getUrl, getAllUrls} = require('../controllers/shorten-url')
+const { generateShortenedUrl, returnOriginalUrl, getAllShortenedUrls } = require('../controllers/shorten-url')
 
-Router.post('/shorten',setUrl)
+Router.post('/shorten',generateShortenedUrl)
 
-Router.get('/all-urls',getAllUrls)
+Router.get('/all-urls',getAllShortenedUrls)
 
-Router.get('/:id',getUrl)
+Router.get('/:id',returnOriginalUrl)
 
 module.exports = Router

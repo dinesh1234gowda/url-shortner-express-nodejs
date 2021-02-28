@@ -1,5 +1,5 @@
 const Joi = require('joi');
-
+//Schema of /shorten route request body 
 const Schema = Joi.object({
 	url:Joi.string().pattern(new RegExp(/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/)).required(),
 	description:Joi.string().required()

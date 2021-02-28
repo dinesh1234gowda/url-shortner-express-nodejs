@@ -1,7 +1,7 @@
 {
   "name": "url-shortner",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple url shortening service using nodejs and express",
   "main": "index.js",
   "scripts": {
     "test": "jest --testPathIgnorePatterns=config/* ",

@@ -1,6 +1,10 @@
 const { generateHash } = require('../util/generate-hash')
 const { ValidateRequestBody } = require('../models/shorten-url')
 
+/*
+Class to perform fundamental operation; SET and GET.
+To Store the data in JS Map Datastructure
+*/
 class shortenUrl {
 	constructor(){
 		this.urlMap = new Map()
@@ -14,8 +18,8 @@ class shortenUrl {
 		return this.urlMap.get(shortenedUrl) 
 	}
 
-	isCollision(hash){
-		return this.urlMap.has(hash)
+	isCollision(shortenedUrl){
+		return this.urlMap.has(shortenedUrl)
 	}
 
 	getAllUrls(){
@@ -25,16 +29,18 @@ class shortenUrl {
 	}
 }
 
-
 let shortUrlObj = new shortenUrl()
 
-module.exports.setUrl = function(req,res){
+/*
+
+*/
+module.exports.generateShortenedUrl = function(req,res){
 	try {
 		const requestBody = req.body;
-		const isValid = ValidateRequestBody(requestBody);
+		const isValidBody = ValidateRequestBody(requestBody);
 		
-		if(!isValid){
-			res.json({
+		if(!isValidBody){
+			return res.json({
 				message:'Error',
 				error:'Invalid body'
 			})
@@ -59,8 +65,8 @@ module.exports.setUrl = function(req,res){
 	}
 }
 
-
-module.exports.getUrl  = function(req,res){
+// returns the original url details from shortened url id
+module.exports.returnOriginalUrl  = function(req,res){
 	const shortenedUrlId = req.params.id;
 	if(shortUrlObj.getUrl(shortenedUrlId)){
 		const urlValues = shortUrlObj.getUrl(shortenedUrlId)
@@ -79,8 +85,8 @@ module.exports.getUrl  = function(req,res){
 	}
 }
 
-
-module.exports.getAllUrls = function(req,res){
+//returns all the shortened urls from Map datastructure
+module.exports.getAllShortenedUrls = function(req,res){
 	let allUrlArrays = shortUrlObj.getAllUrls();
 	if(allUrlArrays.length >0){
 		res.json({
