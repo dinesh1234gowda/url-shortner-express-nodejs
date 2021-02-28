@@ -1,0 +1,20 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --testPathIgnorePatterns=config/* ",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "jest": "^26.6.3",
+    "joi": "^17.4.0",
+    "supertest": "^6.1.3"
+  }
+}
